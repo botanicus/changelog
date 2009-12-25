@@ -1,0 +1,15 @@
+h1. About
+
+Simple CHANGELOG parser for Ruby.
+
+h1. Usage
+
+<pre>
+changelog = CHANGELOG.new("/path/to/my/changelog")
+puts "Changes in the last version #{changelog.last_version_name}: \n-  #{changelog.last_version_changes.join("\n-  ")}"
+</pre>
+
+h1. Links
+
+* "RDoc.info API Docs":http://rdoc.info/projects/botanicus/changelog
+* "Yardoc.org API Docs":http://yardoc.org/docs/botanicus-changelog
