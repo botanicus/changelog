@@ -1,2 +1,5 @@
 = Version 0.1
   * Basic functionality
+
+= Version 0.2
+  * Removed Ruby 1.8 compatibility since we need unordered hash from 1.9

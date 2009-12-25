@@ -1,6 +1,6 @@
 h1. About
 
-Simple CHANGELOG parser for Ruby.
+Simple CHANGELOG parser for Ruby 1.9.
 
 h1. Usage
 
