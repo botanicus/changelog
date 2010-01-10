@@ -28,9 +28,15 @@ class CHANGELOG
   # @return [Array<String>, nil]
   #   List of changes in the last version or nil if the changelog is empty
   # @author Jakub Stastny aka Botanicus
-  # @since 0.0.1
-  def last_version_changes
-    self.parse[self.versions.last]
+  # @since 0.0.3
+  # @example
+  #   changelog.version_changes
+  #   changelog.version_changes("Version 0.1")
+  #   changelog.version_changes(/0\.1/)
+  def version_changes(version = self.versions.last)
+    self.parse[version].inject(String.new) do |buffer, line|
+      buffer += "[\e[32m#{version}\e[0m] #{line}\n"
+    end
   end
 
   # @param [String, Regexp] version Full name of the version or pattern matching the version.

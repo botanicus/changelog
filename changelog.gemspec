@@ -6,7 +6,7 @@ require "changelog"
 
 Gem::Specification.new do |s|
   s.name = "changelog"
-  s.version = "0.2"
+  s.version = "0.3"
   s.authors = ["Jakub Šťastný aka Botanicus"]
   s.homepage = "http://github.com/botanicus/changelog"
   s.summary = "Simple CHANGELOG parser for Ruby 1.9"
@@ -23,8 +23,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ::Gem::Requirement.new("~> 1.9")
 
   # post install message
-  changelog = CHANGELOG.new(File.join(File.dirname(__FILE__), "CHANGELOG"))
-  s.post_install_message = "=== Changes in the last version of CHANGELOG ===\n  - #{changelog.last_version_changes.join("\n-  ")}"
+  s.post_install_message = CHANGELOG.new.version_changes
 
   # RubyForge
   s.rubyforge_project = "changelog"
