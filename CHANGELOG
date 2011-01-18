@@ -1,8 +1,11 @@
-= Version 0.1
-  * Basic functionality
+= Version 0.4
+  * Fixed the order, the first version is supposed to be at the bottom, not at the top.
+
+= Version 0.3
+  * CHANGELOG#last_version_changes renamed to CHANGELOG#version_changes and it takes optinal argument with version
 
 = Version 0.2
   * Removed Ruby 1.8 compatibility since we need unordered hash from 1.9
 
-= Version 0.3
-  * CHANGELOG#last_version_changes renamed to CHANGELOG#version_changes and it takes optinal argument with version
+= Version 0.1
+  * Basic functionality

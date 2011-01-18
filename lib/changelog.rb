@@ -22,7 +22,7 @@ class CHANGELOG
   # @author Jakub Stastny aka Botanicus
   # @since 0.0.1
   def last_version_name
-    self.versions.last
+    self.versions.first
   end
 
   # @return [Array<String>, nil]
@@ -33,7 +33,7 @@ class CHANGELOG
   #   changelog.version_changes
   #   changelog.version_changes("Version 0.1")
   #   changelog.version_changes(/0\.1/)
-  def version_changes(version = self.versions.last)
+  def version_changes(version = self.versions.first)
     self.parse[version].inject(String.new) do |buffer, line|
       buffer += "[\e[32m#{version}\e[0m] #{line}\n"
     end
