@@ -1,3 +1,6 @@
+= Version 0.5
+  * Ordering is solved by ReverseHashMixin.
+
 = Version 0.4
   * Fixed the order, the first version is supposed to be at the bottom, not at the top.
 

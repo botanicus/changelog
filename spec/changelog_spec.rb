@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative "../lib/changelog"
+require "changelog"
 
 describe CHANGELOG do
   before(:each) do
@@ -16,8 +16,8 @@ describe CHANGELOG do
 
   describe "#versions" do
     it "should return all versions described in the CHANGELOG" do
-      versions = ["Version 0.2.1", "Version 0.2.0", "Version 0.1.2",
-        "Version 0.1.1", "Version 0.1", "Version 0.0.1 Miracle Born"]
+      versions = ["Version 0.0.1 Miracle Born", "Version 0.1",
+        "Version 0.1.1", "Version 0.1.2", "Version 0.2.0", "Version 0.2.1"]
       @changelog.versions.should eql(versions)
     end
   end
@@ -54,7 +54,7 @@ describe CHANGELOG do
 
   describe "#select" do
     it "should return {version => [changes]} hash for all the versions matching given pattern" do
-      versions = ["Version 0.1.2", "Version 0.1.1", "Version 0.1"]
+      versions = ["Version 0.1", "Version 0.1.1", "Version 0.1.2"]
       @changelog.select(/^Version 0.1/).keys.should eql(versions)
     end
   end

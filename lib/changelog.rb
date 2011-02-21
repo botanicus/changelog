@@ -1,6 +1,14 @@
 # encoding: utf-8
 
 class CHANGELOG
+  module ReverseHashMixin
+    def reverse
+      self.keys.reverse.reduce(Hash.new) do |hash, key|
+        hash.merge(key => self[key])
+      end
+    end
+  end
+
   # @param [String] path Path to your CHANGELOG file
   # @raise [ArgumentError] if given path doesn't exist
   # @author Jakub Stastny aka Botanicus
@@ -22,7 +30,7 @@ class CHANGELOG
   # @author Jakub Stastny aka Botanicus
   # @since 0.0.1
   def last_version_name
-    self.versions.first
+    self.versions.last
   end
 
   # @return [Array<String>, nil]
@@ -33,7 +41,7 @@ class CHANGELOG
   #   changelog.version_changes
   #   changelog.version_changes("Version 0.1")
   #   changelog.version_changes(/0\.1/)
-  def version_changes(version = self.versions.first)
+  def version_changes(version = self.last_version_name)
     self.parse[version].inject(String.new) do |buffer, line|
       buffer += "[\e[32m#{version}\e[0m] #{line}\n"
     end
@@ -76,19 +84,26 @@ class CHANGELOG
   # @author Jakub Stastny aka Botanicus
   # @since 0.0.1
   def parse
-    @result ||= begin
-      lines = File.readlines(@path)
-      lines.inject([nil, Hash.new]) do |pair, line|
-        version, hash = pair
-        if line.match(/^=/)
-          version = line.chomp.sub(/^= /, "")
-          hash[version] = Array.new
-        elsif line.match(/^\s+\* /)
-          hash[version].push(line.chomp.sub(/^\s+\* /, ""))
-        else # skip empty lines
-        end
-        [version, hash]
-      end.last
+    @hash ||= begin
+      hash = __parse__.last
+      hash.extend(ReverseHashMixin)
+      hash.reverse
+    end
+  end
+
+  protected
+  def __parse__
+    lines = File.readlines(@path)
+    lines.inject([nil, Hash.new]) do |pair, line|
+      version, hash = pair
+      if line.match(/^=/)
+        version = line.chomp.sub(/^= /, "")
+        hash[version] = Array.new
+      elsif line.match(/^\s+\* /)
+        hash[version].push(line.chomp.sub(/^\s+\* /, ""))
+      else # skip empty lines
+      end
+      [version, hash]
     end
   end
 end
