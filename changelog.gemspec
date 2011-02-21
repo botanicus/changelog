@@ -8,7 +8,7 @@ require "base64"
 
 Gem::Specification.new do |s|
   s.name = "changelog"
-  s.version = "0.6"
+  s.version = "0.6.1"
   s.authors = ["Jakub Šťastný aka Botanicus"]
   s.homepage = "http://github.com/botanicus/changelog"
   s.summary = "Simple CHANGELOG parser for Ruby 1.9"
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # ruby version
-  s.required_ruby_version = ::Gem::Requirement.new("~> 1.9")
+  # s.required_ruby_version = ::Gem::Requirement.new("~> 1.9")
 
   # post install message
   s.post_install_message = CHANGELOG.new.version_changes
