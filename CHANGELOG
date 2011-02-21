@@ -1,4 +1,7 @@
 = Version 0.5
+  * Support for Ruby 1.8 (for some time!).
+
+= Version 0.5
   * Ordering is solved by ReverseHashMixin.
 
 = Version 0.4

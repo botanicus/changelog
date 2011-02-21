@@ -1,5 +1,11 @@
 # encoding: utf-8
 
+if RUBY_VERSION < "1.9"
+  # Yup, this is a disgusting hack.
+  require "ordered_hash_1.8"
+  Hash = OrderedHash
+end
+
 class CHANGELOG
   module ReverseHashMixin
     def reverse

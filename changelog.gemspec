@@ -8,7 +8,7 @@ require "base64"
 
 Gem::Specification.new do |s|
   s.name = "changelog"
-  s.version = "0.5"
+  s.version = "0.6"
   s.authors = ["Jakub Šťastný aka Botanicus"]
   s.homepage = "http://github.com/botanicus/changelog"
   s.summary = "Simple CHANGELOG parser for Ruby 1.9"
