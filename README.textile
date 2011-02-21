@@ -9,6 +9,14 @@ changelog = CHANGELOG.new("/path/to/my/changelog")
 puts "Changes in the last version #{changelog.last_version_name}: \n-  #{changelog.last_version_changes.join("\n-  ")}"
 </pre>
 
+h1. JRuby
+
+CHANGELOG _does_ work with JRuby, you just have to use the @--1.9@ switch:
+
+<pre>
+jruby --1.9 -S gem install changelog
+</pre>
+
 h1. Links
 
 * "RDoc.info API Docs":http://rdoc.info/projects/botanicus/changelog
