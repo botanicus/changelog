@@ -50,6 +50,10 @@ describe CHANGELOG do
     it "should raise StandardError if more than one version is matched" do
       lambda { @changelog[/Version 0.2.\d/] }.should raise_error(StandardError)
     end
+
+    it "should work with multiple lines per one record" do
+      @changelog["Version 0.2.0"][0].should match("path.html. All other paths are relative to the template paths.")
+    end
   end
 
   describe "#select" do

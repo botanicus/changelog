@@ -107,6 +107,8 @@ class CHANGELOG
         hash[version] = Array.new
       elsif line.match(/^\s+\* /)
         hash[version].push(line.chomp.sub(/^\s+\* /, ""))
+      elsif line.match(/[^\s]/)
+        hash[version][-1] = [hash[version][-1], line.chomp.strip].join(" ")
       else # skip empty lines
       end
       [version, hash]

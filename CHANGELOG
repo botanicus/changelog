@@ -1,3 +1,6 @@
+= Version 0.8
+  * Play nicely with multiple lines per item [#3].
+
 = Version 0.7
   * Play nice with Bundler [#2].
 
